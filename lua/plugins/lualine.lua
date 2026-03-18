@@ -1,9 +1,24 @@
 return {
-  'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    require("lualine").setup({
-      theme = "cyberdream"
-    })
-  end
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("lualine").setup({
+                options = {
+                    theme = "auto", -- Automatically matches your current colorscheme
+                    component_separators = { left = "", right = "" },
+                    section_separators = { left = "", right = "" },
+                    globalstatus = true, -- One statusline for all splits (modern look)
+                },
+                sections = {
+                    lualine_a = { "mode" },
+                    lualine_b = { "branch", "diff", "diagnostics" },
+                    lualine_c = { { "filename", path = 1 } }, -- 'path = 1' shows relative path
+                    lualine_x = { "encoding", "fileformat", "filetype" },
+                    lualine_y = { "progress" },
+                    lualine_z = { "location" },
+                },
+            })
+        end,
+    },
 }

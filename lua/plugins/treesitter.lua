@@ -1,62 +1,55 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  config = function()
-    local configs = require("nvim-treesitter.configs")
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+        local treesitter = require("nvim-treesitter")
 
-    configs.setup({
-      ensure_installed = {
-        "c", "lua", "vim", "vimdoc", "elixir", "javascript", "html", "python", "typescript"
-      },
-      sync_install = false,
-      highlight = { enable = true },
-      indent = { enable = true },
-    })
-  end
+        treesitter.setup({
+            -- 1. Languages to install automatically
+            ensure_installed = {
+                "c",
+                "lua",
+                "vim",
+                "vimdoc",
+                "javascript",
+                "typescript",
+                "tsx",
+                "html",
+                "css",
+                "python",
+                "go",
+                "rust",
+                "java",
+                "c_sharp"
+            },
+
+            -- 2. Install parsers synchronously (only applied to `ensure_installed`)
+            sync_install = false,
+
+            -- 3. Automatically install missing parsers when you open a new filetype
+            auto_install = true,
+
+            -- 4. The main event: Highlighting
+            highlight = {
+                enable = true,
+                -- Set this to true if you want standard vim regex highlighting 
+                -- to run alongside treesitter (usually not needed).
+                additional_vim_regex_highlighting = false,
+            },
+
+            -- 5. Better indentation (especially for Python and Go)
+            indent = { enable = true },
+
+            -- 6. Incremental selection (Pro-tip for refactoring)
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<leader>ss", -- [S]mart [S]election Start
+                    node_incremental = "<leader>si", -- [S]mart [I]ncremental
+                    scope_incremental = "<leader>sc", -- [S]mart [C]ontent
+                    node_decremental = "<leader>sd", -- [S]mart [D]ecremental
+                },
+            },
+        })
+    end
 }
-
--- blade file fix need to port to the config above
--- return {
---   "nvim-treesitter/nvim-treesitter",
---   dependencies = {
---     {
---       "JoosepAlviste/nvim-ts-context-commentstring",
---       opts = {
---         custom_calculation = function(_, language_tree)
---           if vim.bo.filetype == "blade" and language_tree._lang ~= "javascript" and language_tree._lang ~= "php" then
---             return "{{-- %s --}}"
---           end
---         end,
---       },
---     },
---     {
---       "nvim-treesitter/nvim-treesitter-textobjects",
---     },
---   },
---   opts = {
---     auto_install = true,
---     highlight = {
---       enable = true,
---     },
---     indent = {
---       enable = true,
---     },
---   },
---   config = function(_, opts)
---     ---@class ParserInfo[]
---     local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
---     parser_config.blade = {
---       install_info = {
---         url = "https://github.com/EmranMR/tree-sitter-blade",
---         files = {
---           "src/parser.c",
---         },
---         branch = "main",
---         generate_requires_npm = true,
---         requires_generate_from_grammar = true,
---       },
---       filetype = "blade",
---     }
---     require("nvim-treesitter.configs").setup(opts)
---   end,
--- }

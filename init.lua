@@ -1,8 +1,6 @@
--- make sure to load opts before lazy to make sure they are loaded properly
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-require("configs.opts")
-require("configs.keymaps")
-require("configs.lazy")
-
-
+require("config.options")
+require("config.keymaps")
+require("config.lazy")
