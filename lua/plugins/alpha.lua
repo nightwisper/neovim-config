@@ -42,7 +42,7 @@ return {
 			dashboard.button(
 				"e",
 				"󰏚  Open File Explorer",
-				':lua require("oil").toggle_float(nil, { preview = { vertical = true, width = 120 }}) <CR>'
+				':lua require("utils.neo-tree").toggle_with_preview()<CR>'
 			),
 			dashboard.button("r", "󰄉  Recent Files", ":Telescope oldfiles <CR>"),
 			dashboard.button("u", "󱋙  Update Plugins", ":Lazy sync<CR>"),

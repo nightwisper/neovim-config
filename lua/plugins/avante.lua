@@ -1,0 +1,33 @@
+return {
+	-- "yetone/avante.nvim",
+	-- event = "VeryLazy",
+	-- lazy = false,
+	-- version = "*", -- set this to "*" if you want to use the latest release
+	-- opts = {
+	-- 	provider = "claude", -- Cursor uses Claude 3.5 Sonnet by default
+	-- 	auto_suggestions_provider = "claude",
+	-- 	behavior = {
+	-- 		auto_suggestions = false, -- Set to true if you want Ghost Text like Copilot
+	-- 		support_paste_from_clipboard = true,
+	-- 	},
+	-- },
+	-- -- If you're on Fedora, these dependencies are crucial for the UI
+	-- dependencies = {
+	-- 	"stevearc/dressing.nvim",
+	-- 	"nvim-lua/plenary.nvim",
+	-- 	"MunifTanjim/nui.nvim",
+	-- 	"nvim-tree/nvim-web-devicons",
+	-- 	{
+	-- 		-- Support for image pasting
+	-- 		"HakonHarnes/img-clip.nvim",
+	-- 		event = "VeryLazy",
+	-- 		opts = {
+	-- 			default = {
+	-- 				embed_image_as_base64 = false,
+	-- 				prompt_for_file_name = false,
+	-- 				drag_and_drop = { insert_mode = true },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
+}
