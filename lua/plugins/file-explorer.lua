@@ -1,4 +1,4 @@
-local nt_utils = require("lua.utils.neo-tree")
+local nt_utils = require("utils.neo-tree")
 
 return {
 	"nvim-neo-tree/neo-tree.nvim",
